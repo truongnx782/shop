@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="table">
+            <table border="2" width="980px">
+                <thead>
+                    <tr><th><input type="checkbox"></th>
+                        <th>STT</th>
+                        <th>Tên SP</th>
+                        <th>Giá</th>
+                        <th>Số Lượng</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox" onclick="checkQuatily(i)"></td>
+                        <td>1</td>
+                        <td>Bánh Ngọt</td>
+                        <td><input type="text" readonly class="gia" value="1000"></td>
+                        <td><input class="sl" type="number" min="0" name="sl"></td>
+                        <td><label class="tt"></label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox"></td>
+                        <td>2</td>
+                        <td>Kem Chocolate</td>
+                        <td><input type="text" readonly class="gia" value="200"></td>
+                        <td><input class="sl" type="number" min="0" name="sl"></td>
+                        <td><label for="" class="tt"></label></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" class="checkbox"></td>
+                        <td>2</td>
+                        <td>Kem sữa </td>
+                        <td><input type="text" readonly class="gia" value="500"></td>
+                        <td><input class="sl" type="number" min="0" name="sl"></td>
+                        <td><label for="" class="tt"></label></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+          
+                    <td colspan="5">Tổng Tiền</td>
+                    <td colspan="1"><label id="tongtien"> </label></td>
+
+                </tfoot>
+
+            </table>
+
+            <script>
+                var gia = document.getElementsByClassName("gia");
+                var tt = document.getElementsByClassName("tt");
+                var sl = document.getElementsByClassName("sl");
+                var checkbox=document.getElementsByClassName("checkbox");
+
+        //         document.getElementsByClassName("checkbox").onclick = function(n){
+
+                
+
+
+                function thanhtien(i) {
+                    tt[i].innerHTML = gia[i].value * sl[i].value
+                    tongtien1();
+                }
+                function tongtien1() {
+                    let tongtien = 0;
+                    for (j = 0; j < gia.length; j++) {
+                        tt[j].innerHTML = gia[j].value * sl[j].value
+                        tongtien += Number(tt[j].innerHTML);    
+                        // tongtien= tongtien+ Number(tt[j].innerHTML);
+                    }
+                    document.getElementById("tongtien").innerHTML = tongtien;
+
+                }
+                window.onload = function () {
+                    for (let i = 0; i < gia.length; i++) {
+                        sl[i].onclick = function () {
+                            thanhtien(i)
+                        }
+                    }
+                }
+            </script>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
